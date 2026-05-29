@@ -1,0 +1,13 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+# Пропускати реальні файли та папки (css, js, images...)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Пропускати запити до API
+RewriteCond %{REQUEST_URI} !^/api/
+
+# Всі інші → index.html (SPA)
+RewriteRule ^ index.html [L]
